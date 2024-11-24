@@ -83,6 +83,7 @@ Este projeto é um agente automatizado para facilitar o agendamento de serviços
 - Conta ativa na [cal.com](https://cal.com).
 - Arquivo com os preços dos serviços (ex.: `preco.pdf`).
 - Ambiente configurado para execução do agente.
+- possuir o evolution instalado e configurado.
 
 ---
 
