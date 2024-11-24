@@ -1,0 +1,162 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: call.com
+  use_icon_as_answer_icon: false
+kind: app
+version: 0.1.2
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        sourceType: http-request
+        targetType: end
+      id: 1727273210624-source-1727273215395-target
+      selected: false
+      source: '1727273210624'
+      sourceHandle: source
+      target: '1727273215395'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInIteration: false
+        sourceType: start
+        targetType: http-request
+      id: 1727273193588-source-1727273210624-target
+      source: '1727273193588'
+      sourceHandle: source
+      target: '1727273210624'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Iniciar
+        type: start
+        variables:
+        - label: nome
+          max_length: 99
+          options: []
+          required: true
+          type: text-input
+          variable: nome
+        - label: mail
+          max_length: 99
+          options: []
+          required: true
+          type: text-input
+          variable: mail
+        - label: horario
+          max_length: 99
+          options: []
+          required: true
+          type: text-input
+          variable: horario
+      height: 141
+      id: '1727273193588'
+      position:
+        x: 426.42921802044293
+        y: 291.10780987001783
+      positionAbsolute:
+        x: 426.42921802044293
+        y: 291.10780987001783
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data: '{"eventTypeId":1327981,"start":"{{#1727273193588.horario#}}","timeZone":"America/cuiaba","language":"pt","title":"Consultoria
+            com {{#1727273193588.nome#}}","status":"PENDING","responses":{"name":"{{#1727273193588.nome#}}","email":"{{#1727273193588.mail#}}","guests":[],"location":{"value":"online","optionValue":""}},"metadata":{},"description":null,"smsReminderNumber":null}'
+          type: raw-text
+        desc: ''
+        headers: Content-Type:application/json
+        method: post
+        params: apiKey:cal_live_c2cc57ee71e54887536b9198bc6da9c1
+        selected: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: Requisição HTTP
+        type: http-request
+        url: https://api.cal.com/v1/bookings
+        variables: []
+      height: 105
+      id: '1727273210624'
+      position:
+        x: 778.2459663355875
+        y: 286.68284267715035
+      positionAbsolute:
+        x: 778.2459663355875
+        y: 286.68284267715035
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs:
+        - value_selector:
+          - '1727273210624'
+          - status_code
+          variable: body
+        - value_selector:
+          - '1727273210624'
+          - body
+          variable: body
+        selected: false
+        title: Fim
+        type: end
+      height: 115
+      id: '1727273215395'
+      position:
+        x: 1125
+        y: 271.0129325378201
+      positionAbsolute:
+        x: 1125
+        y: 271.0129325378201
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -1966.4420669861775
+      y: -489.34490526469426
+      zoom: 2
